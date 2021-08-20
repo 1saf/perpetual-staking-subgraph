@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: PerpetualStakingContract
@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x425e0ec09f9bcdfd20283bf23251ccb74d118813"
       abi: PerpetualStakingContract
-      startBlock: 12547571 
+      startBlock: 12547571
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -19,7 +19,7 @@ dataSources:
         - Unstaked
       abis:
         - name: PerpetualStakingContract
-          file: ./abis/PerpetualStakingContract.json
+          file: PerpetualStakingContract/abis/PerpetualStakingContract.json
       eventHandlers:
         - event: Staked(address,uint256)
           handler: handleStaked
@@ -27,4 +27,4 @@ dataSources:
           handler: handleTransfer
         - event: Unstaked(address,uint256)
           handler: handleUnstaked
-      file: ./src/mapping.ts
+      file: PerpetualStakingContract/PerpetualStakingContract.wasm
