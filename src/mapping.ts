@@ -23,15 +23,6 @@ export function handleStaked(event: Staked): void {
   staker.save();
 }
 
-export function handleTransfer(event: Transfer): void {
-  let oldStaker = getStaker(event.params.from);
-  let newStaker = getStaker(event.params.to);
-  oldStaker.totalStaked = oldStaker.totalStaked.minus(event.params.value);
-  newStaker.totalStaked = oldStaker.totalStaked.plus(event.params.value);
-  oldStaker.save();
-  newStaker.save();
-}
-
 export function handleUnstaked(event: Unstaked): void {
   let staker = getStaker(event.params.staker);
   staker.totalStaked = staker.totalStaked.minus(event.params.amount);
